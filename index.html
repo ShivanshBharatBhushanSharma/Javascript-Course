@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Tutorial</title>
+    <style>
+        .bg-color{
+            background-color: red;
+        }
+
+        .container{
+            padding: 10px;
+            background-color: orange;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to this Javascript Tutorial</h1>
+    <div class="container" id="firstContainer">
+        <button id="click" onclick="btnClick()" >Click Me</button>
+    </div>
+    <div class="container">
+        <b id="text">How super JS it is</b>
+    </div>
+    <script>
+        var tag = document.getElementById('text');
+        // tag.style.backgroundColor = "orange";
+        tag.classList.add("bg-color");
+        // tag.classList.remove("bg-color");
+
+        console.log(tag.innerHTML);
+        console.log(tag.innerText);
+        
+        // querySelector() returns 1 element 
+        var nodeList = document.querySelectorAll('.container');
+        console.log(nodeList);
+
+        var element = document.createElement('p');
+        element.innerText="p Tag is added using JS";
+        nodeList[0].appendChild(element);
+
+        var elem2 = document.createElement('b');
+        elem2.innerText="b Tag is added using JS";
+        
+        nodeList[0].replaceChild(elem2, element);
+
+        // nodeList[0].removeChild(elem2);
+
+        window.onload = function(){
+            console.log('The document was loaded')
+        }
+
+        function btnClick(){
+            console.log("Button was clicked");
+        }
+ 
+        firstContainer.addEventListener("click", function(){
+            console.log("Container Clicked");
+        })
+
+        firstContainer.addEventListener("mouseover", function(){
+            console.log("Mouse on Container");
+        })
+        
+        firstContainer.addEventListener("mouseout", function(){
+            console.log("Mouse out of Container");
+        })
+
+        
+        let prevHTML = document.querySelectorAll('.container')[1].innerHTML;
+        firstContainer.addEventListener("mouseup", function(){
+            document.querySelectorAll('.container')[1].innerHTML = prevHTML;
+            console.log("Mouse up when clicked on Container");
+        })
+
+        firstContainer.addEventListener("mousedown", function(){
+            document.querySelectorAll('.container')[1].innerHTML = "<b> We have clicked</b>";
+            console.log("Mouse down when clicked on Container");
+        })
+
+        sum = (a,b)=>{
+            return a+b;
+        }
+    </script>
+</body>
+</html>
